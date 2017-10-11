@@ -76,10 +76,6 @@ public class binarySearchTree {
 
 	}
 
-	// All nodes are visited in ascending order
-	// Recursion is used to go to one node and
-	// then go to its child nodes and so forth
-
 	public void inOrderTraverseTree(Node focusNode) {
 
 		if (focusNode != null) {
@@ -124,7 +120,7 @@ public class binarySearchTree {
 		}
 	}
 
-	public Node findNode(int key) {
+	public boolean findNode(int key) {
 
 		// Start at the top of the tree
 
@@ -154,11 +150,11 @@ public class binarySearchTree {
 			// The node wasn't found
 
 			if (focusNode == null)
-				return null;
+				return false;
 
 		}
 
-		return focusNode;
+		return true;
 
 	}
 
@@ -177,40 +173,20 @@ public class binarySearchTree {
   
         return node;
     }
-public static void main(String[] args) {
-
-		binarySearchTree theTree = new binarySearchTree();
-
-		theTree.addNode(50, "Boss");
-		theTree.addNode(25, "Vice President");
-		theTree.addNode(15, "Office Manager");
-		theTree.addNode(30, "Secretary");
-		theTree.addNode(75, "Sales Manager");
-		theTree.addNode(85, "Salesman 1");
-
-		Node result = theTree.lca(theTree.root, 75, 25);
-		
-		System.out.println("LCA of 30 and 25 is: " + result);
-
-		System.out.println("\nNode with the key 75");
-
-		System.out.println(theTree.findNode(75));
-
-}
+	
 }
 
-class Node {
+	class Node {
 
-	int key;
-	String name;
+		int key;
+		String name;
 
-	Node leftChild;
-	Node rightChild;
+		Node leftChild;
+		Node rightChild;
 
-	Node(int key, String name) {
-
-		this.key = key;
-		this.name = name;
+		Node(int key, String name) {
+			this.key = key;
+			this.name = name;
 
 	}
 
