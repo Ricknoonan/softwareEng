@@ -5,157 +5,67 @@ public class binarySearchTree {
 	Node root;
 
 	public void addNode(int key, String name) {
-
-		// Create a new Node and initialize it
-
 		Node newNode = new Node(key, name);
-
-		// If there is no root this becomes root
-
 		if (root == null) {
-
 			root = newNode;
-
 		} else {
-
-			// Set root as the Node we will start
-			// with as we traverse the tree
-
 			Node focusNode = root;
-
-			// Future parent for our new Node
-
 			Node parent;
-
 			while (true) {
-
-				// root is the top parent so we start
-				// there
-
 				parent = focusNode;
-
-				// Check if the new node should go on
-				// the left side of the parent node
-
 				if (key < focusNode.key) {
-
-					// Switch focus to the left child
-
 					focusNode = focusNode.leftChild;
-
-					// If the left child has no children
-
 					if (focusNode == null) {
-
-						// then place the new node on the left of it
-
 						parent.leftChild = newNode;
-						return; // All Done
-
+						return;
 					}
-
-				} else { // If we get here put the node on the right
-
+				} else { 
 					focusNode = focusNode.rightChild;
-
-					// If the right child has no children
-
 					if (focusNode == null) {
-
-						// then place the new node on the right of it
-
 						parent.rightChild = newNode;
-						return; // All Done
-
+						return; 
 					}
-
 				}
-
 			}
 		}
-
 	}
 
 	public void inOrderTraverseTree(Node focusNode) {
-
 		if (focusNode != null) {
-
-			// Traverse the left node
-
 			inOrderTraverseTree(focusNode.leftChild);
-
-			// Visit the currently focused on node
-
 			System.out.println(focusNode);
-
-			// Traverse the right node
-
 			inOrderTraverseTree(focusNode.rightChild);
-
 		}
-
 	}
 
 	public void preorderTraverseTree(Node focusNode) {
-
 		if (focusNode != null) {
-
 			System.out.println(focusNode);
-
 			preorderTraverseTree(focusNode.leftChild);
 			preorderTraverseTree(focusNode.rightChild);
-
 		}
-
 	}
 
 	public void postOrderTraverseTree(Node focusNode) {
-
 		if (focusNode != null) {
-
 			postOrderTraverseTree(focusNode.leftChild);
 			postOrderTraverseTree(focusNode.rightChild);
-
 			System.out.println(focusNode);
 		}
 	}
 
 	public boolean findNode(int key) {
-
-		// Start at the top of the tree
-
 		Node focusNode = root;
-
-		// While we haven't found the Node
-		// keep looking
-
 		while (focusNode.key != key) {
-
-			// If we should search to the left
-
 			if (key < focusNode.key) {
-
-				// Shift the focus Node to the left child
-
 				focusNode = focusNode.leftChild;
-
 			} else {
-
-				// Shift the focus Node to the right child
-
 				focusNode = focusNode.rightChild;
-
 			}
-
-			// The node wasn't found
-
 			if (focusNode == null)
 				return false;
-
 		}
-
 		return true;
-
 	}
 
 	public Node lca(Node node, int n1, int n2) 
@@ -163,21 +73,32 @@ public class binarySearchTree {
         if (node == null)
             return null;
   
-        // If both n1 and n2 are smaller than root, then LCA lies in left
         if (node.key > n1 && node.key > n2)
             return lca(node.leftChild, n1, n2);
   
-        // If both n1 and n2 are greater than root, then LCA lies in right
         if (node.key < n1 && node.key < n2) 
             return lca(node.rightChild, n1, n2);
   
         return node;
     }
 	
+	public Node lca2(Node node, int n1, int n2, int n3){
+		if(node == null){
+			return null;
+		}
+		if(node.key > n1 && node.key > n2 && node.key > n3){
+			return lca2(node.leftChild, n1, n2, n3);
+		}
+		
+		if(node.key < n1 && node.key < n2 && node.key < n3){
+			return lca2(node.rightChild, n1, n2, n3);
+		}
+		return node;
+	}
+	
 }
 
 	class Node {
-
 		int key;
 		String name;
 
@@ -187,18 +108,6 @@ public class binarySearchTree {
 		Node(int key, String name) {
 			this.key = key;
 			this.name = name;
-
-	}
-
-	public String toString() {
-
-		return name + " has the key " + key;
-
-		/*
-		 * return name + " has the key " + key + "\nLeft Child: " + leftChild +
-		 * "\nRight Child: " + rightChild + "\n";
-		 */
-
 	}
 }
 

@@ -10,6 +10,7 @@ public class binarySearchTreeTest {
 	public void findTest(){
 		
 	}
+	
 	@Test
 	public void addTest() {
 		binarySearchTree tree = new binarySearchTree();
@@ -38,5 +39,26 @@ public class binarySearchTreeTest {
 		Node test = tree.lca(tree.root, 6,8);
 		assertEquals (6, test.key);
 		
+	}
+	
+	@Test
+	public void testMinusNumber(){
+		binarySearchTree tree = new binarySearchTree();
+		tree.addNode(-7,"p");tree.addNode(-6,"e");tree.addNode(10,"s");
+		tree.addNode(34,"l");tree.addNode(-8,"q");tree.addNode(51,"7");
+		
+		Node test = tree.lca(tree.root, -8, 34);
+		assertEquals(-7, test.key);
+	}
+	
+	@Test
+	public void testMoreThanTwo(){
+		binarySearchTree tree = new binarySearchTree();
+		tree.addNode(34,"p");tree.addNode(8,"e");tree.addNode(10,"s");
+		tree.addNode(3,"l");tree.addNode(4,"q");tree.addNode(51,"7");
+		tree.addNode(45,"7");tree.addNode(20,"7");tree.addNode(60,"7");
+		
+		Node test = tree.lca2(tree.root, 3, 10, 20);
+		assertEquals(8, test.key);
 	}
 }
