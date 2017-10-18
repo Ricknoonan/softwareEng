@@ -89,7 +89,6 @@ public class binarySearchTree {
 		if(node.key > n1 && node.key > n2 && node.key > n3){
 			return lca2(node.leftChild, n1, n2, n3);
 		}
-		
 		if(node.key < n1 && node.key < n2 && node.key < n3){
 			return lca2(node.rightChild, n1, n2, n3);
 		}
