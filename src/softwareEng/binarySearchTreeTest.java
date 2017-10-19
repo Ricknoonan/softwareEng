@@ -5,16 +5,11 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class binarySearchTreeTest {
-
-	@Test
-	public void findTest(){
-		
-	}
 	
 	@Test
-	public void addTest() {
+	public void findTest() {
 		binarySearchTree tree = new binarySearchTree();
-		tree.addNode(27, "FirstNode");
+		tree.addNode(27, "1st");tree.addNode(5, "2nd");tree.addNode(29, "3rd");
 		assertTrue(tree.findNode(27));
 		assertFalse(tree.findNode(18));
 	}
@@ -22,12 +17,30 @@ public class binarySearchTreeTest {
 	@Test
 	public void testLCA (){
 		binarySearchTree tree = new binarySearchTree();
-		tree.addNode(6,"p");tree.addNode(5,"e");tree.addNode(1,"s");tree.addNode(11,"g");
-		tree.addNode(34,"l");tree.addNode(7,"q");tree.addNode(51,"7");	
+		tree.addNode(6,"p");tree.addNode(4,"e");tree.addNode(1,"s");  
+		tree.addNode(11,"g");tree.addNode(34,"l");tree.addNode(7,"q"); 
+		tree.addNode(51,"7"); tree.addNode(5, "R");	
 		
-		Node test = tree.lca(tree.root, 5, 11);
-		assertEquals(6, test.key);
-		assertNotEquals(9,test.key);
+		Node test1 = tree.lca(tree.root, 4, 11);					
+		assertEquals(6, test1.key);
+		assertNotEquals(9,test1.key);
+		
+		Node test2 = tree.lca(tree.root, 7, 34);
+		assertEquals(11, test2.key);
+		assertNotEquals(9,test2.key);
+		
+		Node test3 = tree.lca(tree.root, 1, 5);
+		assertEquals(4, test3.key);
+		assertNotEquals(9,test3.key);
+		
+		Node test4 = tree.lca(tree.root, 11, 4);
+		assertEquals(6, test4.key);
+		assertNotEquals(9,test4.key);
+		/*
+		binarySearchTree tree2 = new binarySearchTree();
+		Node test4 = tree.lca(tree2.root, 0, 0);
+		assertNull(test4.key);
+		*/
 	}
 
 	@Test
@@ -60,5 +73,8 @@ public class binarySearchTreeTest {
 		
 		Node test = tree.lca2(tree.root, 3, 10, 20);
 		assertEquals(8, test.key);
+		
+		Node test2 = tree.lca2(tree.root, 45, 51, 60);
+		assertEquals(34, test.key);
 	}
 }

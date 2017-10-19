@@ -21,6 +21,7 @@ public class binarySearchTree {
 					}
 				} else { 
 					focusNode = focusNode.rightChild;
+					
 					if (focusNode == null) {
 						parent.rightChild = newNode;
 						return; 
@@ -30,7 +31,7 @@ public class binarySearchTree {
 		}
 	}
 
-	public void inOrderTraverseTree(Node focusNode) {
+	/*public void inOrderTraverseTree(Node focusNode) {
 		if (focusNode != null) {
 			inOrderTraverseTree(focusNode.leftChild);
 			System.out.println(focusNode);
@@ -49,10 +50,11 @@ public class binarySearchTree {
 	public void postOrderTraverseTree(Node focusNode) {
 		if (focusNode != null) {
 			postOrderTraverseTree(focusNode.leftChild);
-			postOrderTraverseTree(focusNode.rightChild);
+			postOrde
+			erseTree(focusNode.rightChild);
 			System.out.println(focusNode);
 		}
-	}
+	}*/
 
 	public boolean findNode(int key) {
 		Node focusNode = root;
@@ -94,7 +96,6 @@ public class binarySearchTree {
 		}
 		return node;
 	}
-	
 }
 
 	class Node {
