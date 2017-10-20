@@ -36,11 +36,7 @@ public class binarySearchTreeTest {
 		Node test4 = tree.lca(tree.root, 11, 4);
 		assertEquals(6, test4.key);
 		assertNotEquals(9,test4.key);
-		/*
-		binarySearchTree tree2 = new binarySearchTree();
-		Node test4 = tree.lca(tree2.root, 0, 0);
-		assertNull(test4.key);
-		*/
+		
 	}
 
 	@Test
@@ -70,11 +66,20 @@ public class binarySearchTreeTest {
 		tree.addNode(34,"p");tree.addNode(8,"e");tree.addNode(10,"s");
 		tree.addNode(3,"l");tree.addNode(4,"q");tree.addNode(51,"7");
 		tree.addNode(45,"7");tree.addNode(20,"7");tree.addNode(60,"7");
+		tree.addNode(1, "");tree.addNode(16, "");tree.addNode(40, "");
+
+		Node test1 = tree.lca2(tree.root, 3, 8, 34);
+		assertEquals(34, test1.key);
 		
-		Node test = tree.lca2(tree.root, 3, 10, 20);
-		assertEquals(8, test.key);
+		Node test2 = tree.lca2(tree.root, 3, 8, 10);
+		assertEquals(8, test2.key);
 		
-		Node test2 = tree.lca2(tree.root, 45, 51, 60);
-		assertEquals(34, test.key);
+		Node test3 = tree.lca2(tree.root, 40, 1, 16);
+		assertEquals(34, test3.key);
+		
+		Node test4 = tree.lca2(tree.root, 51, 60, 40);
+		assertEquals(51, test4.key);
+
+
 	}
 }

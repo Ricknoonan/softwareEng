@@ -31,31 +31,6 @@ public class binarySearchTree {
 		}
 	}
 
-	/*public void inOrderTraverseTree(Node focusNode) {
-		if (focusNode != null) {
-			inOrderTraverseTree(focusNode.leftChild);
-			System.out.println(focusNode);
-			inOrderTraverseTree(focusNode.rightChild);
-		}
-	}
-
-	public void preorderTraverseTree(Node focusNode) {
-		if (focusNode != null) {
-			System.out.println(focusNode);
-			preorderTraverseTree(focusNode.leftChild);
-			preorderTraverseTree(focusNode.rightChild);
-		}
-	}
-
-	public void postOrderTraverseTree(Node focusNode) {
-		if (focusNode != null) {
-			postOrderTraverseTree(focusNode.leftChild);
-			postOrde
-			erseTree(focusNode.rightChild);
-			System.out.println(focusNode);
-		}
-	}*/
-
 	public boolean findNode(int key) {
 		Node focusNode = root;
 		while (focusNode.key != key) {
