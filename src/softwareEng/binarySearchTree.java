@@ -2,7 +2,7 @@ package softwareEng;
 
 public class binarySearchTree {
 
-	Node root;
+	Node root = null;
 
 	public void addNode(int key, String name) {
 		Node newNode = new Node(key, name);
@@ -30,7 +30,7 @@ public class binarySearchTree {
 			}
 		}
 	}
-
+	
 	public boolean findNode(int key) {
 		Node focusNode = root;
 		while (focusNode.key != key) {

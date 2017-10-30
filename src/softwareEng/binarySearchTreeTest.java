@@ -37,6 +37,11 @@ public class binarySearchTreeTest {
 		assertEquals(6, test4.key);
 		assertNotEquals(9,test4.key);
 		
+		/*
+		binarySearchTree tree2 = new binarySearchTree();
+		Node test5 = tree2.lca(tree.root, 0, 0);
+		assertNull(null, test5.key);
+		*/
 	}
 
 	@Test
