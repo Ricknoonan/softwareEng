@@ -1,11 +1,11 @@
 package softwareEng;
 
-	public class DAG{
+	public class DAG<Value>{
 		private class Node {
-			private Node val;					
+			private Value val;					
 			private Node[] successors;			
 		
-			public Node(Node val) {
+			public Node(Value val) {
 				this.val = val;
 			}
 		}
@@ -19,7 +19,7 @@ package softwareEng;
 				return false;
 			}
 		}
-		public boolean find(Node v){
+		public boolean find(Value v){
 			boolean inList = false;
 			for(int i=0; i<nodeList.length;i++){
 				if(nodeList[i].val==v){
@@ -31,7 +31,7 @@ package softwareEng;
 			}
 			return inList;
 		}
-		public void insert(Node v, Node fromVal, Node toVal) {	
+		public void insert(Value v, Value fromVal, Value toVal) {	
 			Node n = new Node(v);
 			Node from = getNodefromVal(fromVal);
 			Node to = getNodefromVal(toVal);
@@ -51,7 +51,7 @@ package softwareEng;
 			}
 			addNode(n);		
 		}
-		public Node getNodefromVal (Node v){
+		public Node getNodefromVal (Value v){
 			Node returnNode = new Node(null); 				
 			for (int i=0; i<nodeList.length; i++){
 				if (nodeList[i].val == v){

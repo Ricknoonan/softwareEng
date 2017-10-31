@@ -6,6 +6,9 @@ import org.junit.Test;
 
 public class LCATests {
 	
+	
+	//Binary Tree Test 
+	//----------------------------------------
 	@Test
 	public void findTest() {
 		binarySearchTree tree = new binarySearchTree();
@@ -81,8 +84,18 @@ public class LCATests {
 		assertEquals(51, test4.key);
 
 	}
+	//-----------------------------------------------------
+	//DAG Test
 	@Test 
-	public void DAGTest(){
+	public void isEmptyTest(){
+		DAG<Integer> dag = new DAG<Integer>();
+		assertEquals("Testing an empty DAG", dag.isEmpty(), true);
+		dag.insert(10, null, null);
+		assertEquals("Testing non empty DAG", dag.isEmpty(),false);
+	}
+	
+	@Test
+	public void insertTest(){
 		
 	}
 }
