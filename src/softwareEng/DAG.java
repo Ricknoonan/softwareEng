@@ -1,12 +1,11 @@
 package softwareEng;
-import java.util.Arrays;
 
-	public class DAG <Value> {
+	public class DAG{
 		private class Node {
-			private Value val;					
+			private Node val;					
 			private Node[] successors;			
 		
-			public Node(Value val) {
+			public Node(Node val) {
 				this.val = val;
 			}
 		}
@@ -20,7 +19,7 @@ import java.util.Arrays;
 				return false;
 			}
 		}
-		public boolean find(Value v){
+		public boolean find(Node v){
 			boolean inList = false;
 			for(int i=0; i<nodeList.length;i++){
 				if(nodeList[i].val==v){
@@ -32,7 +31,7 @@ import java.util.Arrays;
 			}
 			return inList;
 		}
-		public void insert(Value v, Value fromVal, Value toVal) {	
+		public void insert(Node v, Node fromVal, Node toVal) {	
 			Node n = new Node(v);
 			Node from = getNodefromVal(fromVal);
 			Node to = getNodefromVal(toVal);
@@ -52,7 +51,7 @@ import java.util.Arrays;
 			}
 			addNode(n);		
 		}
-		public Node getNodefromVal (Value v){
+		public Node getNodefromVal (Node v){
 			Node returnNode = new Node(null); 				
 			for (int i=0; i<nodeList.length; i++){
 				if (nodeList[i].val == v){
