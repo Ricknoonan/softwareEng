@@ -72,7 +72,7 @@ public class binarySearchTree {
 		return node;
 	}
 }
-/*
+
 	class Node {
 		int key;
 		String name;
@@ -80,10 +80,10 @@ public class binarySearchTree {
 		Node leftChild;
 		Node rightChild;
 
-		Node(int key) {
+		Node(int key, String name) {
 			this.key = key;
 			this.name = name;
 	}
 }
-*/
+
 
