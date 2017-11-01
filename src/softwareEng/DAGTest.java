@@ -47,8 +47,5 @@ public class DAGTest {
 		aList.add(new Node2(null));
 		assertNull("Checks two null nodes passed", dag.lowestCommonAncestor(aList.get(2), null));
 		assertNull("Checks one null node passed", dag.lowestCommonAncestor(null, null));
-		
-		
-
 	}
 }
