@@ -1,75 +1,83 @@
 package softwareEng;
 
-	public class DAG<Value>{
-		private class Node {
-			private Value val;					
-			private Node[] successors;			
-		
-			public Node(Value val) {
-				this.val = val;
-			}
-		}
-		
-		private Node[] nodeList = new DAG.Node[0];	
-		
-		public boolean isEmpty() {
-			if(nodeList.length == 0){
-				return true;
-			}else{
-				return false;
-			}
-		}
-		public boolean find(Value v){
-			boolean inList = false;
-			for(int i=0; i<nodeList.length;i++){
-				if(nodeList[i].val==v){
-					inList = true;
-					break;
-				}else{
-					inList= false;
-				}	
-			}
-			return inList;
-		}
-		public void insert(Value v, Value fromVal, Value toVal) {	
-			Node n = new Node(v);
-			Node from = getNodefromVal(fromVal);
-			Node to = getNodefromVal(toVal);
-			if (fromVal != null) {
-				from.successors = extendArrayByOne(from.successors);
-				from.successors[from.successors.length-1] = n;
-				if (from.val == null) {
-					addNode(from);
-				}
-			}
-			if (toVal != null) {
-				n.successors = extendArrayByOne(n.successors);
-				n.successors[n.successors.length-1] = to;
-				if (to.val == null) {
-					addNode(to);
-				}
-			}
-			addNode(n);		
-		}
-		public Node getNodefromVal (Value v){
-			Node returnNode = new Node(null); 				
-			for (int i=0; i<nodeList.length; i++){
-				if (nodeList[i].val == v){
-					returnNode = nodeList[i];
-					break;			
-				}	
-			}
-			return returnNode;
-		}
-		public void addNode (Node n) {
-			nodeList = extendArrayByOne(nodeList);
-			nodeList[nodeList.length-1] = n;
-		}
-		
-		public Node[] extendArrayByOne(Node[] originalArray) {
-			Node[] copyArray = new DAG.Node[originalArray.length+1];
-			System.arraycopy(originalArray, 0, copyArray, 0, originalArray.length);
-			return copyArray;
-		}
+import java.util.ArrayList;
+import java.util.Stack;
+
+   public class DAG<Value>{
+
+   private Node root;
+
+   public class Node {
+		int data;
+	    Node left, right;
+	    ArrayList<Node> nodeList;
+	    
+	    Node(int value) { 
+	        data = value;
+	        left = right = null;
+	        nodeList = new ArrayList<Node>();
+	    }
+	    
+	    public void addEdge(Node e) {
+	        nodeList.add(e);
+	    }
 	}
+   
+    public Node getRoot() {
+		return root;
+	}
+
+	public void setRoot(Node root) {
+		this.root = root;
+	}
+	
+	private ArrayList<Node> DFS(Node node, Node target, ArrayList<Node> list, Stack<Node> stack) {
+        stack.push(node);
+        for (Node theNode : node.nodeList) {
+            if (theNode.equals(target)) {
+                list.addAll(stack);
+                return list;
+            }
+            DFS(theNode, target, list, stack);
+        }
+        stack.pop();
+        return list;
+    }
+	
+    public Node lowestCommonAncestor(Node n1, Node n2) {
+    	if(getRoot() == null || n1 == null || n2 == null) return null;
+        return lowestCommonAncestor(getRoot(), n1, n2);
+    }
+
+    private Node lowestCommonAncestor(Node node, Node n1, Node n2) {
+        
+        ArrayList<Node> list1, list2, minList, maxList, set;
+        list1 = DFS(node, n1, new ArrayList<>(), new Stack<>());
+        list2 = DFS(node, n2, new ArrayList<>(), new Stack<>());
+        if (list1 == null || list2 == null) {
+            return null;
+        }
+        
+        if (list1.size() <= list2.size()) {
+            minList = list1;
+            maxList = list2;
+        } else {
+            minList = list2;
+            maxList = list1;
+        }
+        
+        set = new ArrayList<>();
+        for (Node n : minList) {
+            set.add(n);
+        }
+        for (int i = maxList.size() - 1; i >= 0; i--) {
+            if (set.contains(maxList.get(i))) {
+                return maxList.get(i);
+            }
+        }
+        return null;
+    	
+}
+   }
+	 
 
