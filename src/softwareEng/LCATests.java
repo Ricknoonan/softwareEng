@@ -1,8 +1,8 @@
 package softwareEng;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+import java.util.ArrayList;
 
 public class LCATests {
 	
@@ -84,17 +84,8 @@ public class LCATests {
 		assertEquals(51, test4.key);
 
 	}
-	//-----------------------------------------------------
-	//DAG Test
-	@Test 
-	public void isEmptyTest(){
 	
-	}
 	
-	@Test
-	public void insertTest(){
-		
-	}
 }
 
 
