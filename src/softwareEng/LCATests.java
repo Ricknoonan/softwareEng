@@ -6,8 +6,6 @@ import org.junit.Test;
 public class LCATests {
 	
 	
-	//Binary Tree Test 
-	//----------------------------------------
 	@Test
 	public void findTest() {
 		binarySearchTree tree = new binarySearchTree();
